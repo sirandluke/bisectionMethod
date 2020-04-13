@@ -18,10 +18,10 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
     a = a + 0.01
     b = b - 0.01
 
-    # set c to an unreachable value for intialization
+    # set c to an unreachable value for initialization
     c = float('inf')
 
-    # apply algoirthm until reaching tolerance or 
+    # apply algorithm until reaching tolerance or 
     # until exceeding the allowed number of iterations
     # or if tolerance is meat
     while(count < itr_max or round(tolerance,1) > abs(part_a_Func(c))):
@@ -65,7 +65,7 @@ def part_a_Func(cor):
         #math.atan(x) takes tangent of x in radians
         f_of_x = (1/cor) - math.tan(cor)
         return f_of_x
-    # if illegal operation is performed (divison by zero, etc) terminate
+    # if illegal operation is performed (division by zero, etc) terminate
     except:
         print("The x coordinate: " + str(cor) + " is invalid") 
         sys.exit()
@@ -89,7 +89,7 @@ a = 0
 b = (math.pi)/2 
 #####################################
 
-# find root with funcnction:  x^(−1) − tan(x) 
+# find root with function:  x^(−1) − tan(x) 
 # on interval: [0, π/2 ]
 # store return value in result
 result = part_a_BisectionMethodAlgrthm(a,b,itr_max,tolerance)
