@@ -97,6 +97,6 @@ result = part_a_BisectionMethodAlgrthm(a,b,itr_max,tolerance)
 if (result[1] > 100 or result[0] == float("inf")):
     print("Algorithm was inconclusive")
 else:
-    print("The root for part b is: " + str(result[0]))
+    print("The root for part a is: " + str(result[0]))
     print("At the nth iteration: " + str(result[1]))
     print("[Rounded solution: " + str(round(result[0],4)) + "]")
