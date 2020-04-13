@@ -2,7 +2,7 @@
 
 ### For Math 170B HW 2
 
-### P5. (Chapter 3.1: Computer problems 1)
+### P5.
     Implement the bisection algorithm.
     Test the program on these functions
     and intervals:
