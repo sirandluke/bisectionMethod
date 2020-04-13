@@ -24,7 +24,7 @@ def part_b_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
     # apply algoirthm until exceeding the 
     # allowed number of iterations
     # or if tolerance is reached
-    while(count < itr_max or tolerance > part_b_Func(c)):
+    while(count < itr_max or round(tolerance,4) > round(part_b_Func(c),4)):
     
         # get midpoint c
         c = (a + b) / 2
@@ -75,13 +75,25 @@ def part_b_Func(cor):
 # set tolerance
 tolerance = 10**-8
 
-# define maximum number of iterations
+
+# Change these values if you want to try
+# different intervals and change the
+# iteration counter
+#####################################
+# maximum number of iterations
 itr_max = 20
+
+# left bound
+a = 0
+
+# right bound
+b = 1
+#####################################
 
 # find root with funcnction:  x^(−1) − 2^(x) 
 # on interval: [0, 1]
 # store return value in result
-result = part_b_BisectionMethodAlgrthm(0,(math.pi)/2,itr_max,tolerance)
+result = part_b_BisectionMethodAlgrthm(a,b,itr_max,tolerance)
 
 if (result[1] > 100 or result[0] == float("inf")):
     print("Algorithm was inconclusive")

@@ -24,7 +24,7 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
     # apply algoirthm until reaching tolerance or 
     # until exceeding the allowed number of iterations
     # or if tolerance is meat
-    while(count < itr_max or tolerance > part_a_Func(c)):
+    while(count < itr_max or round(tolerance,1) > abs(part_a_Func(c))):
     
         # get midpoint c
         c = (a + b) / 2
@@ -39,25 +39,18 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
         # check if new interval is [a,c]
         if(f_of_c * f_of_a < 0):
             # set b to be the midpoint (move it right)
-            print("moving right")
             b = c
 
         # check if new interval is [c,b]
         elif(f_of_c * f_of_b < 0):
             # set a to be the midpoint (move it left)
-            print("moving left")
             a = c
+
         # if the comparisons are inconclusive
         else:
             # value is unreachable
             c = float('inf')
             return c,count
-
-        # break from loop if below tolerance
-        if (float(f_of_c) < float(tolerance)):
-
-            break
-
         # increment counter
         count = count + 1
     
@@ -70,7 +63,7 @@ def part_a_Func(cor):
     # try calculating with given x cor
     try: 
         #math.atan(x) takes tangent of x in radians
-        f_of_x = (1/cor) - math.atan(cor)
+        f_of_x = (1/cor) - math.tan(cor)
         return f_of_x
     # if illegal operation is performed (divison by zero, etc) terminate
     except:
@@ -80,15 +73,26 @@ def part_a_Func(cor):
 
 
 # set tolerance to be 10^(-8)
-tolerance = 10**-2
+tolerance = 10**-8
 
-# define maximum number of iterations
+# Change these values if you want to try
+# different intervals and change the
+# iteration counter
+#####################################
+# maximum number of iterations
 itr_max = 20
+
+# left bound
+a = 0
+
+# right bound
+b = (math.pi)/2 
+#####################################
 
 # find root with funcnction:  x^(−1) − tan(x) 
 # on interval: [0, π/2 ]
 # store return value in result
-result = part_a_BisectionMethodAlgrthm(0,(math.pi)/2,itr_max,tolerance)
+result = part_a_BisectionMethodAlgrthm(a,b,itr_max,tolerance)
 
 if (result[1] > 100 or result[0] == float("inf")):
     print("Algorithm was inconclusive")
