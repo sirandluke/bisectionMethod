@@ -1,6 +1,8 @@
 import math
 import sys
 
+### Author: Luke Sirand
+
 # algorithm for bisection method
 # @ param a -> int storing right bound
 # @ param b -> int storing left bound
@@ -12,16 +14,20 @@ def part_b_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
     # set counter to count number of iterations
     count = 0
 
+    # set a and b to be some arbitrary point within the interval
+    a = a + 0.01
+    b = b - 0.01
+    
     # set c to an unreachable value for intialization
     c = float('inf')
-    # apply algoirthm until reaching tolerance or 
-    # until exceeding the allowed number of iterations
-    while(part_b_Func(c) > tolerance or count < itr_max):
+
+    # apply algoirthm until exceeding the 
+    # allowed number of iterations
+    # or if tolerance is reached
+    while(count < itr_max or tolerance > part_b_Func(c)):
     
         # get midpoint c
         c = (a + b) / 2
-        
-        print("midpoint is:" + str(c))
 
         # calculate the yCor with each xCor
         # round to nearest thousandth
@@ -43,7 +49,7 @@ def part_b_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
             # value is unreachable
             c = float('inf')
             return c,count
-        
+
         # increment counter
         count = count + 1
     
@@ -66,11 +72,11 @@ def part_b_Func(cor):
 
 
 
-# set tolerance to be 10^(-8)
-tolerance = 10**(-8)
+# set tolerance
+tolerance = 10**-8
 
 # define maximum number of iterations
-itr_max = 2
+itr_max = 20
 
 # find root with funcnction:  x^(−1) − 2^(x) 
 # on interval: [0, 1]
@@ -80,5 +86,6 @@ result = part_b_BisectionMethodAlgrthm(0,(math.pi)/2,itr_max,tolerance)
 if (result[1] > 100 or result[0] == float("inf")):
     print("Algorithm was inconclusive")
 else:
-    print("The root is: " + str(result[0]))
+    print("The root for part b is: " + str(result[0]))
     print("At the nth iteration: " + str(result[1]))
+    print("[Rounded solution: " + str(round(result[0],4)) + "]")

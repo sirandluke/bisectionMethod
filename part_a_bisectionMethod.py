@@ -1,6 +1,8 @@
 import math
 import sys
 
+### Author: Luke Sirand
+
 # algorithm for bisection method
 # @ param a -> int storing right bound
 # @ param b -> int storing left bound
@@ -12,12 +14,17 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
     # set counter to count number of iterations
     count = 0
 
+    # set a and b to be some arbitrary point within the interval
+    a = a + 0.01
+    b = b - 0.01
+
     # set c to an unreachable value for intialization
     c = float('inf')
-    
+
     # apply algoirthm until reaching tolerance or 
     # until exceeding the allowed number of iterations
-    while(part_a_Func(c) > tolerance or count < itr_max):
+    # or if tolerance is meat
+    while(count < itr_max or tolerance > part_a_Func(c)):
     
         # get midpoint c
         c = (a + b) / 2
@@ -28,22 +35,29 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
         f_of_a = part_a_Func(a)
         f_of_b = part_a_Func(b)
         f_of_c = part_a_Func(c)
-
+    
         # check if new interval is [a,c]
         if(f_of_c * f_of_a < 0):
             # set b to be the midpoint (move it right)
+            print("moving right")
             b = c
 
         # check if new interval is [c,b]
         elif(f_of_c * f_of_b < 0):
             # set a to be the midpoint (move it left)
+            print("moving left")
             a = c
         # if the comparisons are inconclusive
         else:
             # value is unreachable
             c = float('inf')
             return c,count
-        
+
+        # break from loop if below tolerance
+        if (float(f_of_c) < float(tolerance)):
+
+            break
+
         # increment counter
         count = count + 1
     
@@ -66,10 +80,10 @@ def part_a_Func(cor):
 
 
 # set tolerance to be 10^(-8)
-tolerance = 10**(-8)
+tolerance = 10**-2
 
 # define maximum number of iterations
-itr_max = 2
+itr_max = 20
 
 # find root with funcnction:  x^(−1) − tan(x) 
 # on interval: [0, π/2 ]
@@ -79,5 +93,6 @@ result = part_a_BisectionMethodAlgrthm(0,(math.pi)/2,itr_max,tolerance)
 if (result[1] > 100 or result[0] == float("inf")):
     print("Algorithm was inconclusive")
 else:
-    print("The root for part a is: " + str(result[0]))
+    print("The root for part b is: " + str(result[0]))
     print("At the nth iteration: " + str(result[1]))
+    print("[Rounded solution: " + str(round(result[0],4)) + "]")
