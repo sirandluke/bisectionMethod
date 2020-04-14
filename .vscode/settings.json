@@ -6,5 +6,14 @@
         "method",
         "part",
         "sirand"
-    ]
+    ],
+
+    "bracket-pair-colorizer-2.colors": [
+        "light blue",
+        "yellow",
+        "Pink"
+    ],
+    
+    "bracket-pair-colorizer-2.forceIterationColorCycle":true,
+    
 }

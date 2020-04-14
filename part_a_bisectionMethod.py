@@ -29,6 +29,7 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
         # get midpoint c
         c = (a + b) / 2
         print("midpoint is:" + str(c))
+        
 
         # calculate the yCor with each xCor
         # round to nearest thousandth
@@ -69,7 +70,6 @@ def part_a_Func(cor):
     except:
         print("The x coordinate: " + str(cor) + " is invalid") 
         sys.exit()
-
 
 
 # set tolerance to be 10^(-8)
