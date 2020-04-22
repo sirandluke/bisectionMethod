@@ -1,7 +1,5 @@
 ### Author: Luke Sirand
 
-### For Math 170B HW 2
-
 ### P5.
     Implement the bisection algorithm.
     Test the program on these functions
