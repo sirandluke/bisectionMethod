@@ -23,7 +23,6 @@ def part_a_BisectionMethodAlgrthm (a,b,itr_max,tolerance):
 
     # apply algorithm until reaching tolerance or 
     # until exceeding the allowed number of iterations
-    # or if tolerance is meat
     while(count < itr_max or round(tolerance,1) > abs(part_a_Func(c))):
     
         # get midpoint c
